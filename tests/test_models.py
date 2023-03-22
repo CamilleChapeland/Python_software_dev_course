@@ -80,7 +80,22 @@ def test_daily_min_string():
 
     with pytest.raises(TypeError):
         error_expected = daily_min([['Hello', 'there'], ['General', 'Kenobi']])
-        
+
+def test_daily_std():
+    """Test that std function works for an array of positive integers."""
+
+    from inflammation.models import daily_std
+
+    test_input = np.array([[1, 2],
+                           [3, 4],
+                           [5, 6]])
+
+    # x = abs(test_input - test_input.mean()) ** 2
+    # test_result = np.sqrt(np.mean(x))
+    test_result = np.std(test_input,axis=0)
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(daily_std(test_input), test_result)
         
 '''Using Parametrize function examples'''
 
